@@ -1,0 +1,30 @@
+platform :android do 
+
+    #Android Lanes
+    desc 'Generate & Distribute Android Release APK.'
+    lane :build_and_distribute_apk_firebase do
+        store_password = ENV["ANDROID_KEYSTORE_PASSWORD"]
+        key_password = ENV["ANDROID_KEY_PASSWORD"]
+        key_alias = ENV["ANDROID_KEY_ALIAS"]
+        release_file_path = File.expand_path("../android/app/quick-do.keystore", __dir__)
+
+        firebase_json_file_path = File.expand_path("../android/app/firebase-deployment.json", __dir__)
+
+        gradle(task: 'clean', project_dir: './android')
+        gradle(task: 'assemble', build_type: 'Release', project_dir: './android', properties: {
+            "android.injected.signing.store.file" => release_file_path,
+            "android.injected.signing.store.password" => store_password,
+            "android.injected.signing.key.alias" => key_alias,
+            "android.injected.signing.key.password" => key_password 
+        })
+
+        firebase_app_distribution(
+            app: ENV['FIREBASE_ANDROID_APP_ID'],
+            groups: ENV['FIREBASE_TESTER_GROUP_ALIAS'],
+            service_credentials_file: firebase_json_file_path,
+            android_artifact_type: "APK"
+        )
+
+    end
+
+end
