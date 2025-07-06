@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "129100396672",
+    "project_id": "quickdo-f567b",
+    "storage_bucket": "quickdo-f567b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129100396672:android:7248b04755f5b1a20b4e65",
+        "android_client_info": {
+          "package_name": "com.quickdo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsL_65M6Sfz3vmEflNTMVbkU_ydPRUI98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
